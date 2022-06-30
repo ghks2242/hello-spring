@@ -23,7 +23,7 @@ public class helloController {
     }
 
     @GetMapping("hello-string")
-    @ResponseBody
+    @ResponseBody   // http 바디부분에 데이터를 직접넣어주겟다
     public String helloString(@RequestParam("name") String name) {
         return "hello " + name;
     }

@@ -14,12 +14,12 @@ class MemberServiceTest {
     MemberService memberService;
     MemoryMemberRespository memberRespository;
 
-    @BeforeEach
+    @BeforeEach // 테스트 메서드 실행 이전에 수행된다.
     public void beforeEach() {
         memberRespository = new MemoryMemberRespository();
         memberService = new MemberService(memberRespository);
     }
-    @AfterEach
+    @AfterEach // 메서드는 테스트 메서드 실행 이후에 수행된다.
     public void afterEach() {
         memberRespository.clearStroe();
     }
