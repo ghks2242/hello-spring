@@ -3,9 +3,11 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRespository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 //@Service
+@Transactional
 public class MemberService {
 
     private final MemberRespository memberRespository;
