@@ -1,17 +1,15 @@
 package hello.hellospring;
 
-import hello.hellospring.repository.JpaMemberRepostiory;
 import hello.hellospring.repository.MemberRespository;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.persistence.EntityManager;
-
 @Configuration
 public class SpringConfig {
 
+    // #1
 //    private DataSource dataSource;
 //
 //    @Autowired
@@ -19,21 +17,39 @@ public class SpringConfig {
 //        this.dataSource = dataSource;
 //    }
 
-    private EntityManager em;
+    // #2
+//    private EntityManager em;
+//
+//    @Autowired
+//    public SpringConfig(EntityManager em) {
+//        this.em = em;
+//    }
+
+    // #3
+    private final MemberRespository memberRespository;
 
     @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+    public SpringConfig(MemberRespository memberRespository) {
+        this.memberRespository = memberRespository;
     }
+
 
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRespository());
+        return new MemberService(memberRespository);
     }
 
-    @Bean
-    public MemberRespository memberRespository() {
+//    @Bean
+//    public MemberRespository memberRespository() {
+        // #1
 //        return new MemoryMemberRespository();
-        return new JpaMemberRepostiory(em);
-    }
+        // #2
+//        return new JpaMemberRepostiory(em);
+
+//    }
+    /*
+    @Bean
+    public TimeTraceAop timeTraceAop() {
+        return new TimeTraceAop();
+    }*/
 }
